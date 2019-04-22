@@ -1,0 +1,9 @@
+
+^squid:S1068"*Remove this unused "logger" private field.(Κ8σωθ΅-Hι	RMAJORZ
+CODE_SMELL
+„squid:CommentedOutCodeLine!"<This block of commented-out lines of code should be removed.(°›²ξÿÿÿÿÿ8σωθ΅-Hκ	RMAJORZ
+CODE_SMELL
+„squid:CommentedOutCodeLineH"<This block of commented-out lines of code should be removed.(‡ΖΓεψÿÿÿÿ8σωθ΅-Hλ	RMAJORZ
+CODE_SMELL
+nsquid:S1118":Add a private constructor to hide the implicit public one.(οκτ8σωθ΅-Hμ	RMAJORZ
+CODE_SMELL

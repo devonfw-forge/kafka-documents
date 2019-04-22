@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.capgemini.kafka.general.service.impl.rest.SecurityRestServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.243 s - in com.capgemini.kafka.general.service.impl.rest.SecurityRestServiceImplTest

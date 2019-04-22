@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WebSecurityBeansConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kafkapoc-core</a> &gt; <a href="index.source.html" class="el_package">com.capgemini.kafka.general.service.impl.config</a> &gt; <span class="el_source">WebSecurityBeansConfig.java</span></div><h1>WebSecurityBeansConfig.java</h1><pre class="source lang-java linenums">package com.capgemini.kafka.general.service.impl.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+
+import com.capgemini.kafka.general.logic.impl.config.DefaultRolesPrefixPostProcessor;
+import com.devonfw.module.security.common.api.accesscontrol.AccessControlProvider;
+import com.devonfw.module.security.common.base.accesscontrol.AccessControlSchemaProvider;
+import com.devonfw.module.security.common.impl.accesscontrol.AccessControlProviderImpl;
+import com.devonfw.module.security.common.impl.accesscontrol.AccessControlSchemaProviderImpl;
+
+/**
+ * This configuration class provides factory methods for several Spring security related beans.
+ *
+ */
+@Configuration
+<span class="fc" id="L21">public class WebSecurityBeansConfig {</span>
+
+  /**
+   * This method provides a new instance of {@code AccessControlProvider}
+   *
+   * @return the newly created {@code AccessControlProvider}
+   */
+  @Bean
+  public AccessControlProvider accessControlProvider() {
+
+<span class="fc" id="L31">    return new AccessControlProviderImpl();</span>
+  }
+
+  /**
+   * This method provides a new instance of {@code AccessControlSchemaProvider}
+   *
+   * @return the newly created {@code AccessControlSchemaProvider}
+   */
+  @Bean
+  public AccessControlSchemaProvider accessControlSchemaProvider() {
+
+<span class="fc" id="L42">    return new AccessControlSchemaProviderImpl();</span>
+  }
+
+  /**
+   * This method provides a new instance of {@code CsrfTokenRepository}
+   *
+   * @return the newly created {@code CsrfTokenRepository}
+   */
+  @Bean
+  public CsrfTokenRepository csrfTokenRepository() {
+
+<span class="fc" id="L53">    return new HttpSessionCsrfTokenRepository();</span>
+  }
+
+  /**
+   * This method provides a new instance of {@code DefaultRolesPrefixPostProcessor}
+   *
+   * @return the newly create {@code DefaultRolesPrefixPostProcessor}
+   */
+  @Bean
+  public static DefaultRolesPrefixPostProcessor defaultRolesPrefixPostProcessor() {
+
+    // By default Spring-Security is setting the prefix &quot;ROLE_&quot; for all permissions/authorities.
+    // We disable this undesired behavior here...
+<span class="fc" id="L66">    return new DefaultRolesPrefixPostProcessor(&quot;&quot;);</span>
+  }
+
+  /**
+   * This method provide a new instance of {@code DelegatingPasswordEncoder}
+   *
+   * @return the newly create {@code DelegatingPasswordEncoder}
+   */
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+
+<span class="fc" id="L77">    return PasswordEncoderFactories.createDelegatingPasswordEncoder();</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

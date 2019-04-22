@@ -1,0 +1,11 @@
+kafka.consumer.topic= test
+kafka.consumer.clientId=console-consumer
+kafka.consumer.bootstrapservers=10.76.3.49:9092
+#kafka.consumer.auto.commit.interval=1100
+kafka.consumer.timeoutms=30000
+kafka.consumer.groupId=test
+kafka.consumer.autocommit=true
+kafka.consumer.autocommitInterval=5000
+kafka.consumer.buffermemory=33554432
+kafka.consumer.key.deserializer=com.devonfw.module.kafka.config.KafkaMessageDeSerializer
+kafka.consumer.value.deserializer=com.devonfw.module.kafka.config.KafkaMessageDeSerializer

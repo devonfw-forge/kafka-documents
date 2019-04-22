@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.devonfw.module.kafka.KafkaProducerLogicTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.045 s <<< FAILURE! - in com.devonfw.module.kafka.KafkaProducerLogicTest
+sendMessageTest1(com.devonfw.module.kafka.KafkaProducerLogicTest)  Time elapsed: 0.035 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.devonfw.module.kafka.KafkaProducerLogicTest.setUp(KafkaProducerLogicTest.java:77)
+
+sendMessageTest(com.devonfw.module.kafka.KafkaProducerLogicTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.devonfw.module.kafka.KafkaProducerLogicTest.setUp(KafkaProducerLogicTest.java:77)
+

@@ -1,0 +1,214 @@
+package com.devonfw.module.kafka.config;
+
+import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
+
+/**
+ * class reads producer properties from application.properties as part of POC In actual project Implementation move
+ * these to separate location Basic minimum set of properties are considered for POC Current configuration supports
+ * plaintext protocol and not SSL
+ *
+ * @author pravbhav
+ *
+ */
+@Configuration
+public class KafkaProducerProperties implements EnvironmentAware {
+
+  static Environment environment;
+
+  @Override
+  public void setEnvironment(Environment environment) {
+
+    KafkaProducerProperties.environment = environment;
+  }
+
+  @Bean
+  public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+
+    return new PropertySourcesPlaceholderConfigurer();
+  }
+
+  /**
+   * @return environment
+   */
+  public static Environment getEnvironment() {
+
+    return environment;
+  }
+
+  /**
+   * @return clientId
+   */
+  public String getClientId() {
+
+    return environment.getProperty("kafka.producer.client.id");
+  }
+
+  /**
+   * @return bootstrapservers
+   */
+  public String getBootstrapservers() {
+
+    // kafka.producer.bootstrap.servers
+    return environment.getProperty("kafka.producer.bootstrap.servers");
+
+  }
+
+  /**
+   * @return acks
+   */
+  public String getAcks() {
+
+    return environment.getProperty("kafka.producer.acks").trim();
+  }
+
+  /**
+   * @return retries
+   */
+  public String getRetries() {
+
+    return environment.getProperty("kafka.producer.retries");
+
+  }
+
+  /**
+   * @return batchsize
+   */
+  public String getBatchsize() {
+
+    return environment.getProperty("kafka.producer.batch.size");
+
+  }
+
+  /**
+   * @return lingerms
+   */
+  public String getLingerms() {
+
+    return environment.getProperty("kafka.producer.linger.ms");
+
+  }
+
+  /**
+   * @return buffermemory
+   */
+  public String getBuffermemory() {
+
+    return environment.getProperty("kafka.producer.buffer.memory");
+
+  }
+
+  /**
+   * @return keyserializer
+   */
+  public String getKeyserializer() {
+
+    return environment.getProperty("kafka.producer.key.serializer");
+
+  }
+
+  /**
+   * @return valueserializer
+   */
+  public String getValueserializer() {
+
+    return environment.getProperty("kafka.producer.value.serializer");
+
+  }
+
+  /*
+   * Return properties object for producer to be created.
+   *
+   */
+  public Properties getProperties() {
+
+    Properties prop = new Properties();
+
+    /*
+     *
+     * kafka.producer.topic=test
+kafka.producer.client.id=console-producer
+kafka.producer.bootstrap.servers=10.76.3.49:9092
+kafka.producer.acks= all
+kafka.producer.retries=0
+kafka.producer.batch.size=16384
+kafka.producer.linger.ms=1
+kafka.producer.buffer.memory=33554432
+kafka.producer.key.serializer=com.devonfw.module.kafka.config.KafkaMessageSerializer
+kafka.producer.value.serializer=com.devonfw.module.kafka.config.KafkaMessageSerializer
+
+     *
+     *
+     */
+    /*
+    prop.setProperty("client.id", getClientId());
+    prop.setProperty("bootstrap.servers", getBootstrapservers());
+    prop.setProperty("acks", getAcks());
+    prop.setProperty("retries", getRetries());
+    prop.setProperty("batch.size", getBatchsize());
+    prop.setProperty("linger.ms", getLingerms());
+    prop.setProperty("buffer.memory", getBuffermemory());
+    prop.setProperty("key.serializer", getKeyserializer());
+    prop.setProperty("value.serializer", getValueserializer());
+*/
+
+    prop.setProperty("client.id", "console-producer");
+    prop.setProperty("bootstrap.servers", "10.76.3.49:9092");
+    prop.setProperty("acks", "all");
+    prop.setProperty("retries", 0);
+    prop.setProperty("batch.size", 16384);
+    prop.setProperty("linger.ms", 1);
+    prop.setProperty("buffer.memory", 33554432);
+    prop.setProperty("key.serializer", "com.devonfw.module.kafka.config.KafkaMessageSerializer");
+    prop.setProperty("value.serializer", "com.devonfw.module.kafka.config.KafkaMessageSerializer");
+
+    return prop;
+
+  }
+
+  /**
+   * @return topic
+   */
+  public String getTopic() {
+    // @Value("${kafka.producer.topic}")
+
+    return environment.getProperty("kafka.producer.topic");
+  }
+
+  @Value("${kafka.producer.client.id}")
+  private String clientId;
+
+  @Value("${kafka.producer.bootstrap.servers}")
+  private String bootstrapservers;
+
+  @Value("${kafka.producer.acks}")
+  private String acks;
+
+  @Value("${kafka.producer.retries}")
+  private String retries;
+
+  @Value("${kafka.producer.batch.size}")
+  private String batchsize;
+
+  @Value("${kafka.producer.linger.ms}")
+  private String lingerms;
+
+  @Value("${kafka.producer.buffer.memory}")
+  private String buffermemory;
+
+  @Value("${kafka.producer.key.serializer}")
+  private String keyserializer;
+
+  @Value("${kafka.producer.value.serializer}")
+  private String valueserializer;
+
+  @Value("${kafka.producer.topic}")
+  private String topic;
+
+}

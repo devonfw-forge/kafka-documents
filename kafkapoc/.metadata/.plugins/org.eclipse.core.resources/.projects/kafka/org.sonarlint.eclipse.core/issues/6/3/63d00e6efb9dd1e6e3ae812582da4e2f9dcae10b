@@ -1,0 +1,18 @@
+
+^squid:S1068"*Remove this unused "logger" private field.(¦´«¹8œÚýè¡-H½
+RMAJORZ
+CODE_SMELL
+squid:CommentedOutCodeLineU"<This block of commented-out lines of code should be removed.(ÏŸçÁ8œÚýè¡-H¿
+RMAJORZ
+CODE_SMELL
+squid:CommentedOutCodeLine4"<This block of commented-out lines of code should be removed.(å¨—ñ8œÚýè¡-H¾
+RMAJORZ
+CODE_SMELL
+jsquid:S1135""2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ8 Íÿè¡-HRINFOZ
+CODE_SMELL
+jsquid:S1135("2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿ8 Íÿè¡-HRINFOZ
+CODE_SMELL
+_squid:S1168#"+Return an empty collection instead of null.(¥¹ï8 Íÿè¡-H‘RMAJORZ
+CODE_SMELL
+_squid:S1168)"+Return an empty collection instead of null.(¥¹ï8 Íÿè¡-H’RMAJORZ
+CODE_SMELL

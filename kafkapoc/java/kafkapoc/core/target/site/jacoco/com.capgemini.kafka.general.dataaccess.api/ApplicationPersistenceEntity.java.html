@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ApplicationPersistenceEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kafkapoc-core</a> &gt; <a href="index.source.html" class="el_package">com.capgemini.kafka.general.dataaccess.api</a> &gt; <span class="el_source">ApplicationPersistenceEntity.java</span></div><h1>ApplicationPersistenceEntity.java</h1><pre class="source lang-java linenums">package com.capgemini.kafka.general.dataaccess.api;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
+import javax.persistence.Version;
+
+import com.capgemini.kafka.general.common.api.ApplicationEntity;
+import com.devonfw.module.basic.common.api.entity.PersistenceEntity;
+
+/**
+ * Abstract base class for all {@link PersistenceEntity persistence entities} with an {@link #getId() id} and a
+ * {@link #getModificationCounter() modificationCounter} (version) field. All persistence entities of this application
+ * should inherit from this class. It is using JPA annotations at the getters what has several advantages but also
+ * implies that you have to annotate transient getter methods with the {@link Transient} annotation.
+ */
+@MappedSuperclass
+public abstract class ApplicationPersistenceEntity implements ApplicationEntity, PersistenceEntity&lt;Long&gt; {
+
+  private static final long serialVersionUID = 1L;
+
+  private Long id;
+
+  private int modificationCounter;
+
+  /**
+   * The constructor.
+   */
+  public ApplicationPersistenceEntity() {
+
+<span class="fc" id="L33">    super();</span>
+<span class="fc" id="L34">  }</span>
+
+  @Override
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  public Long getId() {
+
+<span class="fc" id="L41">    return this.id;</span>
+  }
+
+  @Override
+  public void setId(Long id) {
+
+<span class="nc" id="L47">    this.id = id;</span>
+<span class="nc" id="L48">  }</span>
+
+  @Override
+  @Version
+  public int getModificationCounter() {
+
+<span class="nc" id="L54">    return this.modificationCounter;</span>
+  }
+
+  @Override
+  public void setModificationCounter(int version) {
+
+<span class="nc" id="L60">    this.modificationCounter = version;</span>
+<span class="nc" id="L61">  }</span>
+
+  @Override
+  public String toString() {
+
+<span class="nc" id="L66">    StringBuilder buffer = new StringBuilder();</span>
+<span class="nc" id="L67">    toString(buffer);</span>
+<span class="nc" id="L68">    return buffer.toString();</span>
+  }
+
+  /**
+   * Method to extend {@link #toString()} logic.
+   *
+   * @param buffer is the {@link StringBuilder} where to {@link StringBuilder#append(Object) append} the string
+   *        representation.
+   */
+  protected void toString(StringBuilder buffer) {
+
+<span class="nc" id="L79">    buffer.append(getClass().getSimpleName());</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">    if (this.id != null) {</span>
+<span class="nc" id="L81">      buffer.append(&quot;[id=&quot;);</span>
+<span class="nc" id="L82">      buffer.append(this.id);</span>
+<span class="nc" id="L83">      buffer.append(&quot;]&quot;);</span>
+    }
+<span class="nc" id="L85">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

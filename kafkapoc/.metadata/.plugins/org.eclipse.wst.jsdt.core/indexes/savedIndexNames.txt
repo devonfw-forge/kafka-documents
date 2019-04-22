@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\devon\Devon-dist_3.0.0\workspaces\kafkapoc\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1558377137.index
+107354490.index
+1009696115.index
+812209625.index
+1289880724.index
+2473866280.index

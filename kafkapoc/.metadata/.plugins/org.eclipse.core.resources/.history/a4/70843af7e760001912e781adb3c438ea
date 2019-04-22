@@ -1,0 +1,82 @@
+package com.devonfw.module.kafka;
+
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
+import org.springframework.core.env.Environment;
+
+import com.devonfw.module.kafka.config.KafkaProducerProperties;
+import com.devonfw.module.kafka.logic.KafkaProducerLogic;
+import com.devonfw.module.kafka.producer.KafkaMessageProducer;
+import com.devonfw.module.kafka.producer.KafkaRecordMetaData;
+
+import mockit.MockUp;
+import mockit.integration.junit4.JMockit;
+
+/**
+ * @author dichowdh
+ *
+ */
+@RunWith(JMockit.class)
+public class KafkaProducerLogicTest {
+
+  @Rule
+  public MockitoRule rule = MockitoJUnit.rule();
+
+  @Mock
+  Properties properties;
+
+
+
+
+
+  /**
+   *
+   */
+  @Before
+  public void setUp() {
+
+    MockitoAnnotations.initMocks(this);
+
+
+  }
+
+  /**
+   *
+   */
+  @Test
+  public void sendMessageTest() {
+
+    String value = "ABC";
+    Mockito.when(this.producer.sendTextMessage(Mockito.anyString(), Mockito.anyString()))
+        .thenReturn(this.recordMetadata);
+    KafkaRecordMetaData result = this.kafkaProducerLogic.sendMessage("test", value);
+
+  }
+
+  /**
+   *
+   */
+  @Test
+  public void sendMessageTest1() {
+
+    String value = "ABC";
+    String key = "1001" ;
+    Mockito.when(this.producer.sendTextMessage(Mockito.anyString(), Mockito.anyString()))
+        .thenReturn(this.recordMetadata);
+
+    KafkaRecordMetaData result = this.kafkaProducerLogic.sendMessage("test", key, value);
+  }
+
+}

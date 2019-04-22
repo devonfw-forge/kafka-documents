@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1555254305041_0" label="Java Main Sources" name="Java Main Sources">
+<item elementID="=kafkapoc-api/src\/main\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=kafkapoc-core/src\/main\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=kafkapoc-core/src\/main\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=kafkapoc-server/src\/main\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=kafkapoc-server/src\/main\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1555254305104_1" label="Java Test Sources" name="Java Test Sources">
+<item elementID="=kafkapoc-core/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=kafkapoc-core/src\/test\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=kafkapoc-server/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=kafkapoc-server/src\/test\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1555254366554_3" label="kafkapoc" name="kafkapoc">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/kafkapoc-api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/kafkapoc" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/kafkapoc-core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/kafkapoc-server" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1555254311775_2" label="Window Working Set" name="Aggregate for window 1555254311775"/>
+</workingSetManager>

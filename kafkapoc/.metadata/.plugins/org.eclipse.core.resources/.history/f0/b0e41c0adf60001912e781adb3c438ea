@@ -1,0 +1,10 @@
+kafka.consumer.topic= test
+kafka.consumer.clientId=console-consumer
+kafka.consumer.bootstrapservers=10.76.3.49:9092
+kafka.consumer.timeoutms=30000
+kafka.consumer.groupId=test
+kafka.consumer.autocommit=true
+kafka.consumer.autocommitInterval=5000
+kafka.consumer.buffermemory=33554432
+kafka.consumer.keydeserializer=org.apache.kafka.common.serialization.ByteArrayDeserializer
+kafka.consumer.valuedeserializer=org.apache.kafka.common.serialization.ByteArrayDeserializer

@@ -1,0 +1,74 @@
+# This is the spring boot configuration file for development. It will not be included into the application.
+# In order to set specific configurations in a regular installed environment create an according file
+# config/application.properties in the server. If you are deploying the application to a servlet container as untouched
+# WAR file you can locate this config folder in ${symbol_dollar}{CATALINA_BASE}/lib. If you want to deploy multiple applications to
+# the same container (not recommended by default) you need to ensure the WARs are extracted in webapps folder and locate
+# the config folder inside the WEB-INF/classes folder of the webapplication.
+
+server.port=8081
+server.servlet.context-path=/
+
+# Datasource for accessing the database
+# See https://github.com/devonfw-wiki/devon4j/wiki/guide-configuration#security-configuration
+#jasypt.encryptor.password=none
+#spring.datasource.password=ENC(7CnHiadYc0Wh2FnWADNjJg==)
+spring.datasource.password=
+spring.datasource.url=jdbc:h2:./.kafkapoc;
+
+# Enable JSON pretty printing
+spring.jackson.serialization.INDENT_OUTPUT=true
+
+# Flyway for Database Setup and Migrations
+spring.flyway.enabled=true
+spring.flyway.clean-on-validation-error=true
+
+
+# This is the spring boot configuration file for development. It will not be included into the application.
+# In order to set specific configurations in a regular installed environment create an according file
+# config/application.properties in the server. If you are deploying the application to a servlet container as untouched
+# WAR file you can locate this config folder in ${symbol_dollar}{CATALINA_BASE}/lib. If you want to deploy multiple applications to
+# the same container (not recommended by default) you need to ensure the WARs are extracted in webapps folder and locate
+# the config folder inside the WEB-INF/classes folder of the webapplication.
+
+server.port=8081
+server.servlet.context-path=/
+
+# Datasource for accessing the database
+# See https://github.com/devonfw-wiki/devon4j/wiki/guide-configuration#security-configuration
+#jasypt.encryptor.password=none
+#spring.datasource.password=ENC(7CnHiadYc0Wh2FnWADNjJg==)
+spring.datasource.password=
+spring.datasource.url=jdbc:h2:./.kafkapoc;
+
+# Enable JSON pretty printing
+spring.jackson.serialization.INDENT_OUTPUT=true
+
+# Flyway for Database Setup and Migrations
+spring.flyway.enabled=true
+spring.flyway.clean-on-validation-error=true
+kafka.consumer.topic= test
+kafka.consumer.clientId=console-consumer
+kafka.consumer.bootstrapservers=10.76.3.49:9092
+kafka.consumer.timeoutms=30000
+kafka.consumer.groupId=test
+kafka.consumer.autocommit=true
+kafka.consumer.autocommitInterval=5000
+kafka.consumer.buffermemory=33554432
+kafka.consumer.keydeserializer=com.devonfw.module.kafka.config.KafkaMessageDeSerializer
+kafka.consumer.valuedeserializer=com.devonfw.module.kafka.config.KafkaMessageDeSerializer
+
+kafka.producer.topic=test
+kafka.producer.clientId= console-producer
+kafka.producer.bootstrapservers=10.76.3.49:9092
+kafka.producer.acks= all
+kafka.producer.retries=0
+kafka.producer.batchsize=16384
+kafka.producer.lingerms=1
+kafka.producer.buffermemory=33554432
+kafka.producer.keyserializer=com.devonfw.module.kafka.config.KafkaMessageSerializer
+kafka.producer.valueserializer=com.devonfw.module.kafka.config.KafkaMessageSerializer
+
+
+
+
+

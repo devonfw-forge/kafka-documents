@@ -1,0 +1,60 @@
+# This is the configuration file shipped with the application that contains reasonable defaults.
+# Environment specific configurations are configured in config/application.properties.
+# If you are running in a servlet container you may add this to lib/config/application.properties in case you do not
+# want to touch the WAR file.
+
+# server.port=8080
+
+spring.application.name=kafkapoc
+server.servlet.context-path=/
+
+security.expose.error.details=false
+security.cors.enabled=false
+spring.jpa.hibernate.ddl-auto=validate
+
+# Datasource for accessing the database
+# https://github.com/spring-projects/spring-boot/blob/d3c34ee3d1bfd3db4a98678c524e145ef9bca51c/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jdbc/DatabaseDriver.java
+spring.jpa.database=h2
+# spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+
+# Hibernate NamingStrategy has been deprecated and then removed in favor of two step naming strategy ImplicitNamingStrategy and PhysicalNamingStrategy
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+# to prevent that Spring Boot launches batch jobs on startup
+# might otherwise lead to errors if job parameters are needed (or lead to unwanted modifications and longer startup times)
+# see http://stackoverflow.com/questions/22318907/how-to-stop-spring-batch-scheduled-jobs-from-running-at-first-time-when-executin
+spring.batch.job.enabled=false
+
+# Flyway for Database Setup and Migrations
+spring.flyway.locations=classpath:db/migration,classpath:db/type/h2
+
+
+
+# kafka producer properties
+kafka.producer.topic=test
+kafka.producer.client.id= console-producer
+kafka.producer.bootstrap.servers=10.76.3.49:9092
+kafka.producer.acks= all
+kafka.producer.retries=0
+kafka.producer.batch.size=16384
+kafka.producer.linger.ms=1
+kafka.producer.buffer.memory=33554432
+kafka.producer.key.serializer=com.devonfw.module.kafka.config.KafkaMessageSerializer
+kafka.producer.value.serializer=com.devonfw.module.kafka.config.KafkaMessageSerializer
+kafka.consumer.topic= test
+kafka.consumer.client.id=console-consumer
+kafka.consumer.bootstrap.servers=10.76.3.49:9092
+#kafka.consumer.auto.commit.interval=1100
+kafka.consumer.session.timeout.ms=30000
+kafka.consumer.group.id=test
+kafka.consumer.enable.auto.commit=true
+kafka.consumer.auto.commit.interval=5000
+kafka.consumer.buffer.memory=33554432
+kafka.consumer.key.deserializer=com.devonfw.module.kafka.config.KafkaMessageDeSerializer
+kafka.consumer.value.deserializer=com.devonfw.module.kafka.config.KafkaMessageDeSerializer
+
+
+

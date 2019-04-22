@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.devonfw.module.kafka.KafkaConsumerLogicTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.556 s <<< FAILURE! - in com.devonfw.module.kafka.KafkaConsumerLogicTest
+receiveMessageTest(com.devonfw.module.kafka.KafkaConsumerLogicTest)  Time elapsed: 0.441 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.devonfw.module.kafka.KafkaConsumerLogicTest.setUp(KafkaConsumerLogicTest.java:76)
+

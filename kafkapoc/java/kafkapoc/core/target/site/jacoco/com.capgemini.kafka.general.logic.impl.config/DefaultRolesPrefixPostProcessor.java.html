@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DefaultRolesPrefixPostProcessor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kafkapoc-core</a> &gt; <a href="index.source.html" class="el_package">com.capgemini.kafka.general.logic.impl.config</a> &gt; <span class="el_source">DefaultRolesPrefixPostProcessor.java</span></div><h1>DefaultRolesPrefixPostProcessor.java</h1><pre class="source lang-java linenums">package com.capgemini.kafka.general.logic.impl.config;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.core.PriorityOrdered;
+import org.springframework.security.access.annotation.Jsr250MethodSecurityMetadataSource;
+import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
+
+/**
+ * This is an implementation of {@link BeanPostProcessor} that allows to change the role prefix of spring-security. By
+ * default spring-security is magically adding a strange prefix called &quot;ROLE_&quot; to your granted authorities. In order to
+ * prevent this we use this class with an empty prefix.
+ */
+public class DefaultRolesPrefixPostProcessor implements BeanPostProcessor, PriorityOrdered {
+
+  private final String rolePrefix;
+
+  /**
+   * Der Konstruktor.
+   *
+   * @param rolePrefix das gewünschte Rollen-Präfix (z.B. der leere String).
+   */
+  public DefaultRolesPrefixPostProcessor(String rolePrefix) {
+<span class="fc" id="L26">    super();</span>
+<span class="fc" id="L27">    this.rolePrefix = rolePrefix;</span>
+<span class="fc" id="L28">  }</span>
+
+  @Override
+  public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+
+    // remove this if you are not using JSR-250
+<span class="fc bfc" id="L34" title="All 2 branches covered.">    if (bean instanceof Jsr250MethodSecurityMetadataSource) {</span>
+<span class="fc" id="L35">      ((Jsr250MethodSecurityMetadataSource) bean).setDefaultRolePrefix(this.rolePrefix);</span>
+    }
+
+<span class="fc bfc" id="L38" title="All 2 branches covered.">    if (bean instanceof DefaultMethodSecurityExpressionHandler) {</span>
+<span class="fc" id="L39">      ((DefaultMethodSecurityExpressionHandler) bean).setDefaultRolePrefix(this.rolePrefix);</span>
+    }
+<span class="fc bfc" id="L41" title="All 2 branches covered.">    if (bean instanceof DefaultWebSecurityExpressionHandler) {</span>
+<span class="fc" id="L42">      ((DefaultWebSecurityExpressionHandler) bean).setDefaultRolePrefix(this.rolePrefix);</span>
+    }
+<span class="fc bfc" id="L44" title="All 2 branches covered.">    if (bean instanceof SecurityContextHolderAwareRequestFilter) {</span>
+<span class="fc" id="L45">      ((SecurityContextHolderAwareRequestFilter) bean).setRolePrefix(this.rolePrefix);</span>
+    }
+<span class="fc" id="L47">    return bean;</span>
+  }
+
+  @Override
+  public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+
+<span class="fc" id="L53">    return bean;</span>
+  }
+
+  @Override
+  public int getOrder() {
+
+<span class="fc" id="L59">    return PriorityOrdered.HIGHEST_PRECEDENCE;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

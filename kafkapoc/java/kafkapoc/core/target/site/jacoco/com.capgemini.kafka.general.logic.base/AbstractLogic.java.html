@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractLogic.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kafkapoc-core</a> &gt; <a href="index.source.html" class="el_package">com.capgemini.kafka.general.logic.base</a> &gt; <span class="el_source">AbstractLogic.java</span></div><h1>AbstractLogic.java</h1><pre class="source lang-java linenums">package com.capgemini.kafka.general.logic.base;
+
+import com.capgemini.kafka.general.common.base.AbstractBeanMapperSupport;
+
+import com.devonfw.module.basic.common.api.entity.GenericEntity;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Abstract base class for implementations of &lt;em&gt;business logic&lt;/em&gt; in this application. Actual implementations need
+ * to be annotated with {@link javax.inject.Named}.
+ *
+ * @see AbstractUc
+ * @see AbstractComponentFacade
+ */
+public abstract class AbstractLogic extends AbstractBeanMapperSupport {
+
+  /**
+   * The constructor.
+   */
+  public AbstractLogic() {
+
+<span class="fc" id="L27">    super();</span>
+<span class="fc" id="L28">  }</span>
+
+  /**
+   * Creates a {@link Map} with all {@link GenericEntity entities} from the given {@link Collection} using their
+   * {@link GenericEntity#getId() ID} as key. All {@link GenericEntity entities} without an
+   * {@link GenericEntity#getId() ID} ({@code null}) will be ignored.
+   *
+   * @param &lt;ID&gt; is the generic type of the {@link GenericEntity#getId() ID}.
+   * @param &lt;E&gt; is the generic type of the {@link GenericEntity entity}.
+   * @param entities is the {@link Collection} of {@link GenericEntity entities}.
+   * @return a {@link Map} mapping from {@link GenericEntity#getId() ID} to {@link GenericEntity entity}.
+   */
+  protected static &lt;ID, E extends GenericEntity&lt;ID&gt;&gt; Map&lt;ID, E&gt; getEntityMap(Collection&lt;E&gt; entities) {
+
+<span class="nc" id="L42">    Map&lt;ID, E&gt; id2EntityMap = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">    for (E entity : entities) {</span>
+<span class="nc" id="L44">      ID id = entity.getId();</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">      if (id != null) {</span>
+<span class="nc" id="L46">        id2EntityMap.put(id, entity);</span>
+      }
+<span class="nc" id="L48">    }</span>
+<span class="nc" id="L49">    return id2EntityMap;</span>
+  }
+
+  /**
+   * Determines the {@link GenericEntity entities} to delete if &lt;code&gt;currentList&lt;/code&gt; is the current list from the
+   * persistence and &lt;code&gt;listToSave&lt;/code&gt; is the new list that shall be saved. In other words this method selects the
+   * {@link GenericEntity entities} from &lt;code&gt;currentList&lt;/code&gt; that are not contained in &lt;code&gt;listToSave&lt;/code&gt;.
+   *
+   * @param &lt;ID&gt; is the generic type of the {@link GenericEntity#getId() ID}.
+   * @param &lt;E&gt; is the generic type of the {@link GenericEntity entity}.
+   * @param currentEntities is the {@link Collection} of the {@link GenericEntity entities} currently persisted. We
+   *        assume that all objects in this list have an {@link GenericEntity#getId() ID} value (that is not
+   *        {@code null}).
+   * @param entitiesToSave is the {@link Collection} that contains the {@link GenericEntity entities} that shall be
+   *        saved. It may contain {@link GenericEntity entities} that have no {@link GenericEntity#getId() ID} that
+   *        shall be newly created.
+   * @return the {@link List} with the {@link GenericEntity entities} to delete.
+   */
+  protected static &lt;ID, E extends GenericEntity&lt;ID&gt;&gt; List&lt;E&gt; getEntities2Delete(Collection&lt;E&gt; currentEntities,
+      Collection&lt;E&gt; entitiesToSave) {
+
+<span class="nc" id="L70">    List&lt;E&gt; result = new ArrayList&lt;&gt;(currentEntities.size());</span>
+<span class="nc" id="L71">    Map&lt;ID, E&gt; entityMap = getEntityMap(entitiesToSave);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">    for (E entity : currentEntities) {</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">      if (!entityMap.containsKey(entity.getId())) {</span>
+        // entity from currentList is not contained in listToSave...
+<span class="nc" id="L75">        result.add(entity);</span>
+      }
+<span class="nc" id="L77">    }</span>
+<span class="nc" id="L78">    return result;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

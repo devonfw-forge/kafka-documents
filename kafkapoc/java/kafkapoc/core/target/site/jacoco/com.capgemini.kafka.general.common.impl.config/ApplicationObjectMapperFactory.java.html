@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ApplicationObjectMapperFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kafkapoc-core</a> &gt; <a href="index.source.html" class="el_package">com.capgemini.kafka.general.common.impl.config</a> &gt; <span class="el_source">ApplicationObjectMapperFactory.java</span></div><h1>ApplicationObjectMapperFactory.java</h1><pre class="source lang-java linenums">package com.capgemini.kafka.general.common.impl.config;
+
+import javax.inject.Named;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.web.csrf.CsrfToken;
+
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
+import com.devonfw.module.json.common.base.ObjectMapperFactory;
+import com.devonfw.module.json.common.base.type.PageableJsonSerializer;
+import com.devonfw.module.json.common.base.type.PageableJsonDeserializer;
+
+/**
+ * The MappingFactory class to resolve polymorphic conflicts within the kafkapoc application.
+ */
+@Named(&quot;ApplicationObjectMapperFactory&quot;)
+public class ApplicationObjectMapperFactory extends ObjectMapperFactory {
+
+  /**
+   * The constructor.
+   */
+  public ApplicationObjectMapperFactory() {
+
+<span class="fc" id="L25">    super();</span>
+    // see https://github.com/devonfw-wiki/devon4j/wiki/guide-json#json-and-inheritance
+<span class="fc" id="L27">    SimpleModule module = getExtensionModule();</span>
+<span class="fc" id="L28">    module.addAbstractTypeMapping(CsrfToken.class, CsrfTokenImpl.class);</span>
+	// register spring-data Pageable
+<span class="fc" id="L30">    module.addSerializer(Pageable.class, new PageableJsonSerializer());</span>
+<span class="fc" id="L31">    module.addDeserializer(Pageable.class, new PageableJsonDeserializer());</span>
+<span class="fc" id="L32">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

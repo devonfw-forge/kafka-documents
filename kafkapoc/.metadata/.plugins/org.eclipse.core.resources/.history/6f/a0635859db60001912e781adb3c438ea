@@ -1,0 +1,304 @@
+package com.devonfw.module.kafka.config;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
+import org.springframework.util.ResourceUtils;
+
+import com.devonfw.module.kafka.logic.KafkaConsumerLogic;
+
+/**
+ * class reads consumer properties from application.properties as part of POC In actual project Implementation move
+ * these to separate location Basic minimum set of properties are considered for POC Current configuration supports
+ * plaintext protocol and not SSL * @author pravbhav
+ *
+ */
+@Configuration
+
+public class KafkaConsumerProperties{
+
+
+/*
+  @Value("${kafka.consumer.groupId}")
+  private String groupId;
+*/
+  @Value("${kafka.consumer.buffer.memory}")
+  private String buffermemory;
+
+  @Value("${kafka.consumer.keydeserializer}")
+  private String keydeserializer;
+
+  @Value("${kafka.consumer.valuedeserializer}")
+  private String valuedeserializer;
+
+  @Value("${kafka.consumer.topic}")
+  private String topic;
+
+  @Value("${kafka.consumer.clientId}")
+  private String clientId;
+
+  @Value("${kafka.consumer.bootstrapservers}")
+  private String bootstrapservers;
+
+  @Value("${kafka.consumer.autocommit}")
+  private String autocommit;
+
+  @Value("${kafka.consumer.autocommitInterval}")
+  private String autocommitInterval;
+
+  @Value("${kafka.consumer.timeoutms}")
+  private String timeoutms;
+
+  private static final Logger logger = LoggerFactory.getLogger(KafkaConsumerProperties.class);
+
+
+  public String getKeydeserializer() {
+
+	  return this.keydeserializer;
+
+  }
+
+  public void setKeydeserializer(String keydeserializer) {
+
+    this.keydeserializer = keydeserializer;
+  }
+
+  public String getValuedeserializer() {
+
+	 return  this.keydeserializer ;
+
+  }
+
+  public void setValuedeserializer(String valuedeserializer) {
+
+    this.valuedeserializer = valuedeserializer;
+  }
+
+
+
+  /*
+   * Return the instance of Properties class for Consumer object to be created properties values currently loaded from
+   * application properties
+   */
+
+
+  /*
+
+
+  public Properties getProperties() {
+
+    Properties prop = new Properties();
+  //  prop.put("consumer.enable.auto.commit", this.getAutocommit());
+  //  prop.put("auto.commit.interval.ms", this.getAutocommitInterval());
+    prop.put("session.timeout.ms", this.getTimeoutms());
+    prop.put("group.id", this.getGroupId());
+    prop.put("key.deserializer", this.getKeydeserializer());
+    prop.put("value.deserializer", this.getValuedeserializer());
+    prop.put("client.id", this.getClientId());
+    prop.put("bootstrap.servers", this.getBootstrapservers());
+    return prop;
+
+  }
+
+  */
+
+
+
+  /*
+   * Return properties object for producer to be created.
+   *  Refer to full set of values here
+   *  https://kafka.apache.org/0100/documentation.html#consumerconfigs
+   */
+
+
+  public void setProperties(Properties prop )
+  {
+	  //	setGroupId(prop.getProperty("kafka.consumer.groupId"));
+	    setClientId(prop.getProperty("kafka.consumer.clientId"));
+	    setBootstrapservers(prop.getProperty("kafka.consumer.bootstrapservers"));
+	    setTimeoutms( prop.getProperty("kafka.consumer.timeoutms"));
+	    setBuffermemory( prop.getProperty("kafka.consumer.buffermemory"));
+	    setKeydeserializer( prop.getProperty("kafka.consumer.keyserializer"));
+	    setValuedeserializer( prop.getProperty("kafka.consumer.valueserializer"));
+  }
+
+  /**
+   *
+   * @return kafka Producer properties
+   */
+  public Properties getProperties() {
+
+    Properties prop = new Properties();
+    Properties pr = new Properties() ;
+    InputStream in = null;
+    File file = null ;
+    try {
+	        file = ResourceUtils.getFile("classpath:kafka-consumer.properties");
+	        in = new FileInputStream(file);
+	        prop.load(in);
+	        setProperties(prop);
+			in.close();
+	} catch (IOException e) {
+		 e.printStackTrace();
+		 logger.error("Error while loading consumer properties");
+		 logger.error("Unable to load kafka-consumer.properties");
+
+	}finally {
+
+	}
+    pr.setProperty("session.timeout.ms", getTimeoutms());
+    pr.setProperty("bootstrap.servers", getBootstrapservers());
+  //  pr.setProperty("group.id", getGroupId());
+    pr.setProperty("buffermemory", getBuffermemory());
+    pr.setProperty("key.deserializer", getKeydeserializer());
+    pr.setProperty("value.deserializer", getValuedeserializer());
+    pr.setProperty("client.id", getClientId());
+    return pr;
+
+  }
+
+
+
+
+
+
+  /**
+   * @return topic
+   */
+  public String getTopic() {
+    return this.topic ;
+
+  }
+
+  /**
+   * @param topic new value of {@link #gettopic}.
+   */
+  public void setTopic(String topic) {
+    this.topic = topic;
+  }
+
+  /**
+   * @return clientId
+   */
+  public String getClientId() {
+
+	  return this.clientId ;
+  }
+
+  /**
+   * @param clientId new value of {@link #getclientId}.
+   */
+  public void setClientId(String clientId) {
+
+    this.clientId = clientId;
+  }
+
+  /**
+   * @return bootstrapservers
+   */
+  public String getBootstrapservers() {
+     return this.bootstrapservers ;
+  }
+
+  /**
+   * @param bootstrapservers new value of {@link #getbootstrapservers}.
+   */
+  public void setBootstrapservers(String bootstrapservers) {
+    this.bootstrapservers = bootstrapservers;
+  }
+
+  /**
+   * @return buffermemory
+   */
+  public String getBuffermemory() {
+
+	 return this.buffermemory ;
+
+  }
+
+  /**
+   * @param buffermemory new value of {@link #getbuffermemory}.
+   */
+  public void setBuffermemory(String buffermemory) {
+
+    this.buffermemory = buffermemory;
+  }
+
+  /**
+   * @return autocommit
+   */
+  public String getAutocommit() {
+
+	  return this.autocommit ;
+  }
+
+  /**
+   * @param autocommit new value of {@link #getautocommit}.
+   */
+  public void setAutocommit(String autocommit) {
+
+    this.autocommit = autocommit;
+  }
+
+  /**
+   * @return autocommitInterval
+   */
+  public String getAutocommitInterval() {
+
+	  return this.autocommitInterval ;
+  }
+
+  /**
+   * @param autocommitInterval new value of {@link #getautocommitInterval}.
+   */
+  public void setAutocommitInterval(String autocommitInterval) {
+
+    this.autocommitInterval = autocommitInterval;
+  }
+
+  /**
+   * @param timeoutms new value of {@link #gettimeoutms}.
+   */
+  public void setTimeoutms(String timeoutms) {
+
+    this.timeoutms = timeoutms;
+  }
+
+  /**
+   * @param groupId new value of {@link #getgroupId}.
+   */
+ /* public void setGroupId(String groupId) {
+
+    this.groupId = groupId;
+  }*/
+
+  /**
+   * @return timeoutms
+   */
+  public String getTimeoutms() {
+
+	  return this.timeoutms ;
+  }
+
+  /**
+   * @return groupId
+   */
+
+  /*
+  public String getGroupId() {
+
+	  return this.groupId ;
+  }*/
+
+}

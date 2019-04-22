@@ -1,0 +1,11 @@
+# kafka producer properties
+kafka.producer.topic=test
+kafka.producer.clientId= console-producer
+kafka.producer.bootstrapservers=10.76.3.49:9092
+kafka.producer.acks= all
+kafka.producer.retries=0
+kafka.producer.batchsize=16384
+kafka.producer.lingerms=1
+kafka.producer.buffermemory=33554432
+kafka.producer.keyserializer=com.devonfw.module.kafka.config.KafkaMessageSerializer
+kafka.producer.valueserializer=com.devonfw.module.kafka.config.KafkaMessageSerializer

@@ -1,0 +1,37 @@
+
+j
+squid:S1061"9Replace this use of System.out or System.err by a logger.(¯ÇŸŠúÿÿÿÿHòRMAJORZ
+CODE_SMELL
+k
+squid:S1063"9Replace this use of System.out or System.err by a logger.(¡Ö¨f8ýéÄè¡-H¨RMAJORZ
+CODE_SMELL
+dsquid:S1905Î"1Remove this unnecessary cast to "RecordMetadata".(Ù³‹µûÿÿÿÿHóRMINORZ
+CODE_SMELL
+‹squid:S2293J"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô™øþúÿÿÿÿHñRMINORZ
+CODE_SMELL
+Ysquid:S1148Ñ"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHöRMINORZVULNERABILITY
+ssquid:S3457_"AFormat specifiers should be used instead of string concatenation.(é÷ƒéÿÿÿÿÿHøRMAJORZ
+CODE_SMELL
+msquid:S2142Ï"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€HôRMAJORZBUG
+xsquid:S2147Ò"ECombine this catch with the one at line 207, which has the same body.(åþŒóùÿÿÿÿHõRMINORZ
+CODE_SMELL
+tsquid:S3457­"AFormat specifiers should be used instead of string concatenation.(é÷ƒéÿÿÿÿÿHûRMAJORZ
+CODE_SMELL
+‚squid:S1192_"MDefine a constant instead of duplicating this literal "Exception ex" 4 times.(é÷ƒéÿÿÿÿÿHïRCRITICALZ
+CODE_SMELL
+ssquid:S3457|"AFormat specifiers should be used instead of string concatenation.(é÷ƒéÿÿÿÿÿHùRMAJORZ
+CODE_SMELL
+Ysquid:S1148Ô"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿH÷RMINORZVULNERABILITY
+tsquid:S3457˜"AFormat specifiers should be used instead of string concatenation.(é÷ƒéÿÿÿÿÿHúRMAJORZ
+CODE_SMELL
+‹squid:S22935"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ã„•³ûÿÿÿÿHðRMINORZ
+CODE_SMELL
+l
+squid:S106s"9Replace this use of System.out or System.err by a logger.(Í½áü8ýéÄè¡-H©RMAJORZ
+CODE_SMELL
+tsquid:S3457È"AFormat specifiers should be used instead of string concatenation.(ìøöáûÿÿÿÿHüRMAJORZ
+CODE_SMELL
+…squid:CommentedOutCodeLineõ"<This block of commented-out lines of code should be removed.(’¾„üÿÿÿÿ8¹£é¡-H­RMAJORZ
+CODE_SMELL
+…squid:CommentedOutCodeLineû"<This block of commented-out lines of code should be removed.(¶Ÿ® ùÿÿÿÿ8¹£é¡-H®RMAJORZ
+CODE_SMELL

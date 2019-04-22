@@ -1,0 +1,11 @@
+com\capgemini\kafka\general\common\base\PermissionCheckTest$1.class
+com\capgemini\kafka\general\common\base\test\AccessControlSchemaXmlValidationTest.class
+com\capgemini\kafka\general\common\base\test\ApplicationComponentTest.class
+com\capgemini\kafka\general\common\base\PermissionCheckTest.class
+com\capgemini\kafka\general\common\base\test\TestUtil.class
+com\capgemini\kafka\general\common\base\test\DbTestHelper.class
+com\capgemini\kafka\general\common\base\Devon4jPackageCheckTest.class
+com\capgemini\kafka\general\service\base\test\RestServiceTest.class
+com\capgemini\kafka\general\service\impl\rest\SecurityRestServiceImplTest.class
+com\capgemini\kafka\general\common\base\test\ApplicationSubsystemTest.class
+com\capgemini\kafka\general\common\impl\config\TestWebSecurityConfig.class

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="KafkaApplicationLogicTest" project="kafka" tests="3" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.devonfw.module.kafka.KafkaApplicationLogicTest" incomplete="true">
+    <testcase name="sendMessageTest1" classname="com.devonfw.module.kafka.KafkaApplicationLogicTest" time="1.091"/>
+    <testcase name="receiveMessageTest" classname="com.devonfw.module.kafka.KafkaApplicationLogicTest" time="101.206"/>
+    <testcase name="sendMessageTest" classname="com.devonfw.module.kafka.KafkaApplicationLogicTest" incomplete="true"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,91 @@
+package com.devonfw.module.kafka.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.devonfw.module.kafka.common.KafkaException;
+import com.devonfw.module.kafka.common.Kafkautil;
+import com.devonfw.module.kafka.logic.KafkaConsumerLogic;
+import com.devonfw.module.kafka.message.KafkaMessage;
+import com.devonfw.module.kafka.service.KafkaConsumerService;
+
+/**
+ *
+ * Class is sample consumer service which consumes kafka topic
+ *
+ * @author pravbhav
+ *
+ */
+
+@RestController
+
+public class KafkaConsumerServiceImpl implements KafkaConsumerService {
+
+  private static final Logger logger = LoggerFactory.getLogger(KafkaConsumerServiceImpl.class);
+
+  /**
+   *
+   * @param topic
+   * @return
+   * @throws KafkaException
+   */
+
+  @RequestMapping(value = "/kafka/consume/{topic}", produces = { "application/json" }, consumes = {
+  "application/json" }, method = RequestMethod.POST)
+  public List<KafkaMessage> consume(@PathVariable String topic) throws KafkaException {
+
+    logger.debug("Inside Consume-String Method");
+
+    if (Kafkautil.isNullOrEmpty(topic)) {
+      logger.error(" Bad Request : topic is empty or null");
+      throw new KafkaException("Bad Request: Topic is null or empty");
+    }
+
+    KafkaConsumerLogic logic = new KafkaConsumerLogic();
+    List<KafkaMessage> msgList = null;
+    try {
+      msgList = logic.consumeTextMessage(topic);
+    } catch (KafkaException e) {
+
+      logger.error("Exception" + e.getMessage());
+      e.printStackTrace();
+    }
+    return msgList;
+  }
+
+  /**
+   *
+   * @param topic
+   * @return
+   * @throws KafkaException
+   */
+
+  @RequestMapping(value = "/kafka/consumeobject/{topic}", produces = { "application/json" }, consumes = {
+  "application/json" }, method = RequestMethod.POST)
+  public List<KafkaMessage> consumeObjectMessage(@PathVariable String topic) throws KafkaException {
+
+    logger.debug("Inside Consume-Object Method");
+
+    if (Kafkautil.isNullOrEmpty(topic)) {
+      logger.error(" Bad Request : topic is empty or null");
+      throw new KafkaException("Bad Request: Topic is null or empty");
+    }
+
+    KafkaConsumerLogic logic = new KafkaConsumerLogic();
+    List<KafkaMessage> msgList = null;
+    try {
+      msgList = logic.consumeObjectMessage(topic);
+    } catch (KafkaException e) {
+      logger.error("Exception" + e.getMessage());
+      e.printStackTrace();
+    }
+    return msgList;
+  }
+
+}

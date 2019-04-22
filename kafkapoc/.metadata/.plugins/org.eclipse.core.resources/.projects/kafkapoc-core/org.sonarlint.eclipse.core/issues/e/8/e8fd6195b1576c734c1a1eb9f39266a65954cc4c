@@ -1,0 +1,22 @@
+
+„squid:S00117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍÇôõùÿÿÿÿHÆRMINORZ
+CODE_SMELL
+„squid:S00117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…„¼®ùÿÿÿÿHÁRMINORZ
+CODE_SMELL
+vsquid:S1192/"FDefine a constant instead of duplicating this literal "error" 3 times.(ôÚÜòHÃRCRITICALZ
+CODE_SMELL
+l
+squid:S106>"9Replace this use of System.out or System.err by a logger.(ƒ˜ÐÏ8¦üÝå¡-HÄRMAJORZ
+CODE_SMELL
+„squid:S00117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´Ø»ÒùÿÿÿÿH¿RMINORZ
+CODE_SMELL
+€squid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(ç¦Ý™HÂRMINORZ
+CODE_SMELL
+‹squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ç¦Ý™HÅRCRITICALZ
+CODE_SMELL
+q
+squid:S106B"9Replace this use of System.out or System.err by a logger.(ªÁõ–ùÿÿÿÿ8žÒèå¡-HÀRMAJORZ
+CODE_SMELL
+l
+squid:S106I"9Replace this use of System.out or System.err by a logger.(ÇýÍ¶8™ï‡è¡-H½RMAJORZ
+CODE_SMELL
